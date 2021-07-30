@@ -1,0 +1,360 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "meditopia.test"
+        }
+    ],
+    "info": {
+        "name": "Laravel",
+        "_postman_id": "2a368f26-cfe0-44f1-bfda-22c4dcba6014",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Meditation Finish",
+            "description": "\nAPI endpoints for finishing meditations",
+            "item": [
+                {
+                    "name": "Handle the incoming request.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/meditation-finish",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/meditation-finish"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"meditation_id\":12}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Authentication",
+            "description": "\nAPI endpoints for managing authentication",
+            "item": [
+                {
+                    "name": "Register Endpoint.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/auth\/register",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/auth\/register"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"John Doe\",\"email\":\"johndoe@example.com\",\"password\":\"secret\",\"password_confirmation\":\"secret\",\"ref_code\":\"S60F2EC85AFAEF\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 201,
+                            "body": "{\"error\":false,\"message\":\"User Created\",\"data\":{\"token\":\"19|gyNm065OjWn48CCkSGQpM4KGmR9NLaSRWr9uXUlC\",\"user\":{\"name\":\"John Doe\",\"email\":\"johndoe@example.com\",\"created_at\":\"2021-07-17 15:49:05\"},\"wallet\":{\"amount\":0,\"currency\":\"TRY\"}}}",
+                            "name": "201"
+                        },
+                        {
+                            "header": [],
+                            "code": 400,
+                            "body": "{\"error\":true,\"message\":\"Reference number not found\",\"data\":null}",
+                            "name": "400"
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\"error\":true,\"message\":\"StoreUserRequest validation failed\",\"data\":{\"email\":[\"The email has already been taken.\"]}}",
+                            "name": "422"
+                        }
+                    ]
+                },
+                {
+                    "name": "Login Endpoint.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/auth\/login",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/auth\/login"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"johndoe@example.com\",\"password\":\"secret\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"error\":false,\"message\":\"User logged in\",\"data\":{\"token\":\"19|gyNm065OjWn48CCkSGQpM4KGmR9NLaSRWr9uXUlC\",\"user\":{\"name\":\"John Doe\",\"email\":\"johndoe@example.com\",\"created_at\":\"2021-07-17 15:49:05\"},\"wallet\":{\"amount\":0,\"currency\":\"TRY\"}}}",
+                            "name": "200"
+                        },
+                        {
+                            "header": [],
+                            "code": 400,
+                            "body": "{\"error\":true,\"message\":\"Credentials not match\",\"data\":null}",
+                            "name": "400"
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\"error\":true,\"message\":\"StoreUserRequest validation failed\",\"data\":{\"password\":[\"The password field is required.\"]}}",
+                            "name": "422"
+                        }
+                    ]
+                },
+                {
+                    "name": "Logout Endpoint.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/auth\/logout",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/auth\/logout"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\"error\":false,\"message\":\"User tokens revoked\",\"data\":null}",
+                            "name": "200"
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\"message\":\"Unauthenticated\"}",
+                            "name": "401"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Reporting",
+            "description": "\nAPI endpoints for meditation reports",
+            "item": [
+                {
+                    "name": "Register Endpoint.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/first-item",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/first-item"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 201,
+                            "body": "{\"error\":false,\"message\":\"User Created\",\"data\":{\"token\":\"19|gyNm065OjWn48CCkSGQpM4KGmR9NLaSRWr9uXUlC\",\"user\":{\"name\":\"John Doe\",\"email\":\"johndoe@example.com\",\"created_at\":\"2021-07-17 15:49:05\"},\"wallet\":{\"amount\":0,\"currency\":\"TRY\"}}}",
+                            "name": "201"
+                        },
+                        {
+                            "header": [],
+                            "code": 400,
+                            "body": "{\"error\":true,\"message\":\"Reference number not found\",\"data\":null}",
+                            "name": "400"
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\"error\":true,\"message\":\"StoreUserRequest validation failed\",\"data\":{\"email\":[\"The email has already been taken.\"]}}",
+                            "name": "422"
+                        }
+                    ]
+                },
+                {
+                    "name": "Register Endpoint.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/second-item",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/second-item"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 201,
+                            "body": "{\"error\":false,\"message\":\"User Created\",\"data\":{\"token\":\"19|gyNm065OjWn48CCkSGQpM4KGmR9NLaSRWr9uXUlC\",\"user\":{\"name\":\"John Doe\",\"email\":\"johndoe@example.com\",\"created_at\":\"2021-07-17 15:49:05\"},\"wallet\":{\"amount\":0,\"currency\":\"TRY\"}}}",
+                            "name": "201"
+                        },
+                        {
+                            "header": [],
+                            "code": 400,
+                            "body": "{\"error\":true,\"message\":\"Reference number not found\",\"data\":null}",
+                            "name": "400"
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\"error\":true,\"message\":\"StoreUserRequest validation failed\",\"data\":{\"email\":[\"The email has already been taken.\"]}}",
+                            "name": "422"
+                        }
+                    ]
+                },
+                {
+                    "name": "Register Endpoint.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/third-item",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/third-item"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 201,
+                            "body": "{\"error\":false,\"message\":\"User Created\",\"data\":{\"token\":\"19|gyNm065OjWn48CCkSGQpM4KGmR9NLaSRWr9uXUlC\",\"user\":{\"name\":\"John Doe\",\"email\":\"johndoe@example.com\",\"created_at\":\"2021-07-17 15:49:05\"},\"wallet\":{\"amount\":0,\"currency\":\"TRY\"}}}",
+                            "name": "201"
+                        },
+                        {
+                            "header": [],
+                            "code": 400,
+                            "body": "{\"error\":true,\"message\":\"Reference number not found\",\"data\":null}",
+                            "name": "400"
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\"error\":true,\"message\":\"StoreUserRequest validation failed\",\"data\":{\"email\":[\"The email has already been taken.\"]}}",
+                            "name": "422"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "noauth"
+    }
+}
